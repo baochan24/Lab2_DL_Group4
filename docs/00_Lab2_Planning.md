@@ -43,18 +43,18 @@ Mục tiêu không chỉ là có một mô hình dự đoán được, mà còn 
 
 ---
 
-## 3. Dataset — quyết định cần chốt
+## 3. Dataset — đã chốt
 
 Slide trang 24 đưa **CIFAR-10** làm ví dụ. Đề trang 23 không bắt buộc duy nhất dataset này, vì vậy nhóm cần xác nhận lựa chọn trước khi triển khai.
 
 | Hạng mục | Trạng thái hiện tại |
 |---|---|
-| Dataset đề xuất | CIFAR-10, vì có ví dụ trực tiếp trong slide |
+| Dataset đã chọn | **CIFAR-10**, vì có ví dụ trực tiếp trong slide |
 | Số lớp nếu dùng CIFAR-10 | 10 |
 | Nguồn dữ liệu | Có thể tải bằng torchvision.datasets |
 | Tiền xử lý | Resize nếu kiến trúc yêu cầu; chuyển tensor; normalize phù hợp với trọng số pre-trained |
 | Chia dữ liệu | Train để cập nhật trọng số; validation để chọn cấu hình; test chỉ dùng cho đánh giá cuối |
-| Quyết định cuối | **Chưa chốt** — xác nhận với nhóm/giảng viên trước khi code |
+| Quyết định cuối | **Đã chốt: CIFAR-10** |
 
 Không sử dụng kết quả test để chọn hyperparameters hoặc chọn mô hình tốt nhất. Nếu dataset không có validation set, tạo validation split từ training data và ghi rõ cách chia.
 
@@ -165,7 +165,7 @@ Checkpoint có thể lớn; trước khi commit lên Git, cần kiểm tra dung 
 
 ## 8. Cấu trúc repository dự kiến
 
-Cấu trúc này là định hướng; sẽ điều chỉnh sau khi chốt dataset, cách chạy và phân công nhóm.
+Đã chốt cách tổ chức **kết hợp Python scripts và notebook**: scripts đảm nhiệm pipeline có thể chạy lại; notebook dùng để khám phá dữ liệu, trực quan hóa và trình bày kết quả.
 
     Lab2_DL_Group4/
     ├── README.md
