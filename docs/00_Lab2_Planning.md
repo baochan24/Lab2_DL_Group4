@@ -45,18 +45,17 @@ Mục tiêu không chỉ là có một mô hình dự đoán được, mà còn 
 
 ## 3. Dataset — đã chốt
 
-Slide trang 24 đưa **CIFAR-10** làm ví dụ. Đề trang 23 không bắt buộc duy nhất dataset này, vì vậy nhóm cần xác nhận lựa chọn trước khi triển khai.
+Slide trang 24 đưa **CIFAR-10** làm ví dụ và nhóm đã chọn CIFAR-10 làm dataset cho Lab 2.
 
-| Hạng mục | Trạng thái hiện tại |
+| Hạng mục | Quyết định |
 |---|---|
-| Dataset đã chọn | **CIFAR-10**, vì có ví dụ trực tiếp trong slide |
-| Số lớp nếu dùng CIFAR-10 | 10 |
-| Nguồn dữ liệu | Có thể tải bằng torchvision.datasets |
-| Tiền xử lý | Resize nếu kiến trúc yêu cầu; chuyển tensor; normalize phù hợp với trọng số pre-trained |
-| Chia dữ liệu | Train để cập nhật trọng số; validation để chọn cấu hình; test chỉ dùng cho đánh giá cuối |
-| Quyết định cuối | **Đã chốt: CIFAR-10** |
+| Dataset | **CIFAR-10** |
+| Số lớp | 10 |
+| Nguồn dữ liệu | Có thể tải bằng `torchvision.datasets` |
+| Tiền xử lý | Chuyển tensor và normalize phù hợp với trọng số pre-trained; resize nếu kiến trúc/cấu hình yêu cầu |
+| Chia dữ liệu | Train để cập nhật trọng số; validation để chọn cấu hình; test chỉ dùng đánh giá cuối |
 
-Không sử dụng kết quả test để chọn hyperparameters hoặc chọn mô hình tốt nhất. Nếu dataset không có validation set, tạo validation split từ training data và ghi rõ cách chia.
+Không sử dụng kết quả test để chọn hyperparameters hoặc chọn mô hình tốt nhất. Tạo validation split từ phần training data và ghi rõ cách chia.
 
 ---
 
@@ -165,7 +164,7 @@ Checkpoint có thể lớn; trước khi commit lên Git, cần kiểm tra dung 
 
 ## 8. Cấu trúc repository dự kiến
 
-Đã chốt cách tổ chức **kết hợp Python scripts và notebook**: scripts đảm nhiệm pipeline có thể chạy lại; notebook dùng để khám phá dữ liệu, trực quan hóa và trình bày kết quả.
+Đã chốt cách tổ chức **kết hợp Python scripts và notebooks**: scripts đảm nhiệm pipeline có thể chạy lại; notebooks dùng để khám phá dữ liệu, trực quan hóa và trình bày kết quả.
 
     Lab2_DL_Group4/
     ├── README.md
@@ -181,16 +180,20 @@ Checkpoint có thể lớn; trước khi commit lên Git, cần kiểm tra dung 
     │   ├── evaluate.py
     │   └── utils.py
     ├── notebooks/
-    │   └── exploration.ipynb
+    │   ├── 01_dataset_exploration.ipynb
+    │   └── 02_results_analysis.ipynb
     ├── results/
     │   ├── experiment_summary.csv
     │   └── figures/
     ├── requirements.txt
     └── .gitignore
 
-- results/figures/: chỉ giữ biểu đồ/ảnh cần thiết cho báo cáo.
-- runs/, dataset tải về, cache, môi trường ảo và checkpoint lớn: mặc định không commit nếu chưa thống nhất cách quản lý.
-- Nếu nhóm chọn quy trình notebook-first thay vì script-first, có thể thay đổi cấu trúc nhưng vẫn phải bảo đảm chạy lại được và dễ kiểm tra.
+Cách dùng dự kiến:
+- `src/`: mã nguồn tái sử dụng để chuẩn bị dữ liệu, xây model, train và evaluate.
+- `notebooks/01_dataset_exploration.ipynb`: kiểm tra mẫu ảnh, nhãn, shape và preprocessing; không đặt toàn bộ training pipeline ở đây.
+- `notebooks/02_results_analysis.ipynb`: đọc bảng kết quả và tạo phân tích/biểu đồ cho báo cáo.
+- `results/figures/`: chỉ giữ biểu đồ/ảnh cần thiết cho báo cáo.
+- Dataset tải về, cache, môi trường ảo, TensorBoard logs lớn và checkpoint lớn mặc định không commit nếu chưa thống nhất cách quản lý.
 
 ---
 
@@ -219,13 +222,19 @@ Checkpoint có thể lớn; trước khi commit lên Git, cần kiểm tra dung 
 
 ---
 
-## 11. Các quyết định còn mở
+## 11. Quyết định đã chốt và việc còn mở
 
-- [ ] Dataset chính thức: CIFAR-10 hay dataset khác?
-- [ ] Môi trường chạy: Google Colab, máy local GPU hay CPU?
-- [ ] Hai kiến trúc đầu tiên cần so sánh là gì?
-- [ ] Số epoch và giới hạn thời gian cho mỗi experiment?
-- [ ] Có yêu cầu riêng về báo cáo, ảnh chụp TensorBoard, checkpoint hoặc cách nộp từ giảng viên không?
-- [ ] Thành viên và phân công công việc của nhóm?
+### Đã chốt
+- [x] Dataset: **CIFAR-10**.
+- [x] Môi trường: **máy cá nhân có GPU NVIDIA**.
+- [x] Tổ chức mã nguồn: **kết hợp Python scripts và notebooks**.
 
-**Nguyên tắc:** trước khi có câu trả lời, không ghi các lựa chọn tạm thời thành yêu cầu chính thức và không bịa kết quả. Khi nhóm chốt các mục trên, cập nhật tài liệu này rồi mới chuyển sang triển khai code.
+### Còn cần xác nhận
+- [ ] Tên model GPU, dung lượng VRAM, phiên bản driver/CUDA đang có.
+- [ ] Phiên bản Python và cách quản lý môi trường (venv/conda).
+- [ ] Hai kiến trúc đầu tiên: đề xuất VGG16 và DenseNet121.
+- [ ] Số epoch, learning rate, batch size và giới hạn thời gian cho mỗi experiment.
+- [ ] Yêu cầu nộp cụ thể từ giảng viên (nếu có).
+- [ ] Thành viên và phân công công việc của nhóm.
+
+**Nguyên tắc:** CIFAR-10, GPU NVIDIA và workflow scripts + notebooks là các quyết định đã chốt. Những chi tiết còn mở không được xem là yêu cầu chính thức cho đến khi nhóm xác nhận. Không ghi số liệu thực nghiệm trước khi thực sự chạy.
