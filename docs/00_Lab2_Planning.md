@@ -4,6 +4,17 @@
 > **Phạm vi:** Chốt bài toán, yêu cầu, đầu ra và kế hoạch trước khi viết code huấn luyện.  
 > **Nguồn chính:** Slide *Chapter 3 — Training Deep Neural Networks*, đặc biệt trang 20–24; đề *Practice 2 — Hands-on practice with pre-trained neural network architectures* ở trang 23.
 
+## Tài liệu điều phối dự án
+
+- [Phân công công việc chính thức cho TV1–TV6](ASSIGNMENT_LAB2.md)
+- [Cấu trúc repository, quyền sở hữu file và quy ước kết nối module](01_Project_Structure.md)
+- [Quy ước giao diện giữa các module](TEAM_CONTRACT.md)
+- [Ma trận sở hữu file](FILE_OWNERS.md)
+- [Git workflow và Pull Request](GIT_WORKFLOW.md)
+- [Trạng thái review công việc](REVIEW_STATUS.md)
+
+Các branch công việc của TV1–TV6 **chưa được tạo**. Chỉ tạo sau khi nhóm kiểm tra và đồng ý với tài liệu phân công cùng file structure.
+
 ---
 
 ## 1. Tóm tắt đề bài
