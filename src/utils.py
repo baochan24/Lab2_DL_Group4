@@ -6,7 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 from uuid import uuid4
-
+import math
 import numpy as np
 import torch
 import yaml
@@ -91,3 +91,82 @@ def save_json(path: str | Path, data: dict[str, Any]) -> None:
     output_path = Path(path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(content + "\n", encoding="utf-8")
+
+def validate_config(config: dict[str, Any]) -> None:
+    """Kiểm tra các trường cơ bản trước khi chạy huấn luyện.
+
+    Không sửa config và không tự điền hyperparameter.
+    Các trường riêng của từng module được kiểm tra khi tích hợp.
+    """
+    required = (
+        "experiment_name",
+        "model_name",
+        "pretrained",
+        "batch_size",
+        "learning_rate",
+        "epochs",
+        "strategy",
+        "seed",
+    )
+
+    missing = [
+        key for key in required
+        if key not in config or config[key] is None
+    ]
+    if missing:
+        raise ValueError(
+            "Cấu hình thiếu hoặc còn null: " + ", ".join(missing)
+        )
+
+    name = config["experiment_name"]
+    if (
+        not isinstance(name, str)
+        or not name.strip()
+        or name in {".", ".."}
+        or any(char in name for char in '<>:"/\\|?*')
+        or name.endswith((" ", "."))
+    ):
+        raise ValueError("experiment_name không hợp lệ.")
+
+    if config["model_name"] not in ("vgg16", "densenet121"):
+        raise ValueError("model_name phải là vgg16 hoặc densenet121.")
+
+    if not isinstance(config["pretrained"], bool):
+        raise ValueError("pretrained phải là true hoặc false.")
+
+    for key in ("batch_size", "epochs"):
+        value = config[key]
+        if type(value) is not int or value <= 0:
+            raise ValueError(f"{key} phải là số nguyên dương.")
+
+    lr = config["learning_rate"]
+    if (
+        type(lr) not in (int, float)
+        or not math.isfinite(lr)
+        or lr <= 0
+    ):
+        raise ValueError("learning_rate phải là số hữu hạn lớn hơn 0.")
+
+    seed = config["seed"]
+    if type(seed) is not int or not 0 <= seed < 2**32:
+        raise ValueError("seed phải là số nguyên từ 0 đến 2**32 - 1.")
+
+    if config["strategy"] not in (
+        "classifier_only",
+        "finetune_last_layers",
+    ):
+        raise ValueError("strategy không được hỗ trợ.")
+
+    if config["strategy"] == "finetune_last_layers":
+        layers = config.get("finetune_layers")
+        if (
+            not isinstance(layers, list)
+            or not layers
+            or any(
+                not isinstance(layer, str) or not layer.strip()
+                for layer in layers
+            )
+        ):
+            raise ValueError(
+                "Fine-tuning cần finetune_layers là danh sách tên lớp."
+            )
