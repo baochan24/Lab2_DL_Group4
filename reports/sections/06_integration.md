@@ -38,7 +38,7 @@ chưa kiểm tra đầy đủ schema hoặc các giá trị `null`.
 
 ## Công việc tích hợp còn lại
 
-- [ ] Ghi nhận kết quả kiểm tra seed, tạo thư mục và lưu JSON.
+- [ x] Ghi nhận kết quả kiểm tra seed, tạo thư mục và lưu JSON.
 - [ ] Đối chiếu API thực tế của TV1–TV5.
 - [ ] Thống nhất khóa cấu hình và dữ liệu trả về.
 - [ ] Triển khai điểm chạy tổng `main.py`.
