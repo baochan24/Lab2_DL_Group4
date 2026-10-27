@@ -1,0 +1,9 @@
+# TODO TV5: so sánh kiến trúc. Cố gắng giữ điều kiện như E1.
+experiment_name: E2_densenet121
+model_name: densenet121
+pretrained: true
+batch_size: null
+learning_rate: null
+epochs: null
+strategy: classifier_only
+seed: 42

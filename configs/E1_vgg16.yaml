@@ -1,0 +1,9 @@
+# TODO TV5: VGG16 baseline. Chưa chốt hyperparameter.
+experiment_name: E1_vgg16
+model_name: vgg16
+pretrained: true
+batch_size: null
+learning_rate: null
+epochs: null
+strategy: classifier_only
+seed: 42
