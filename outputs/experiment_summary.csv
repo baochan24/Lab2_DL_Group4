@@ -1,0 +1,1 @@
+experiment,model,learning_rate,batch_size,epochs,strategy,best_epoch,best_val_loss,best_val_accuracy,test_loss,test_accuracy,runtime_seconds,seed,notes

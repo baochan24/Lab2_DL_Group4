@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Downloaded data and caches
+data/raw/
+data/processed/
+data/external/
+.cache/
+.cache_torch/
+
+# Model checkpoints — use agreed artifact storage for large files
+*.pt
+*.pth
+*.ckpt
+
+# TensorBoard and generated outputs
+runs/
+outputs/runs/
+outputs/checkpoints/
+outputs/tmp/
+*.log
+
+# Notebook cache
+.ipynb_checkpoints/

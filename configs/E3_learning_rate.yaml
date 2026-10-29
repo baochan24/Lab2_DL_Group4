@@ -1,0 +1,9 @@
+# TODO TV5: chỉ thay learning rate so với baseline đã chọn.
+experiment_name: E3_learning_rate
+model_name: null
+pretrained: true
+batch_size: null
+learning_rate: null
+epochs: null
+strategy: classifier_only
+seed: 42

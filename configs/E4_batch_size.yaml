@@ -1,0 +1,9 @@
+# TODO TV5: chỉ thay batch size so với baseline đã chọn.
+experiment_name: E4_batch_size
+model_name: null
+pretrained: true
+batch_size: null
+learning_rate: null
+epochs: null
+strategy: classifier_only
+seed: 42
