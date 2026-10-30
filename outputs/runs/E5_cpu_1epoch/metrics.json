@@ -1,0 +1,21 @@
+{
+  "experiment_name": "E5_cpu_1epoch",
+  "smoke_test": false,
+  "best_epoch": 1,
+  "best_val_acc": 0.921,
+  "best_val_loss": 0.23213470115661622,
+  "training_time_sec": 6135.234429499998,
+  "best_checkpoint_path": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\checkpoints\\E5_cpu_1epoch\\best_model.pth",
+  "test_acc": 0.9181,
+  "final_test": {
+    "test_samples": 10000,
+    "checkpoint_path": "outputs/checkpoints/E5_cpu_1epoch/best_model.pth",
+    "test_loss": 0.245938,
+    "accuracy": 0.9181,
+    "precision": 0.918185,
+    "recall": 0.9181,
+    "f1_score": 0.917776,
+    "average": "weighted",
+    "source": "Final test terminal output; rounded to 6 decimal places"
+  }
+}

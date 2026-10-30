@@ -1,0 +1,26 @@
+{
+  "experiment_name": "E5_cpu_1epoch",
+  "model_name": "densenet121",
+  "pretrained": true,
+  "strategy": "finetune_last_layers",
+  "finetune_layers": [
+    "features.denseblock4",
+    "features.norm5"
+  ],
+  "batch_size": 32,
+  "learning_rate": 0.0001,
+  "epochs": 1,
+  "optimizer": "adam",
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "image_size": 224,
+  "num_classes": 10,
+  "val_ratio": 0.1,
+  "num_workers": 0,
+  "data_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\data",
+  "log_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\runs\\E5_cpu_1epoch",
+  "checkpoint_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\checkpoints\\E5_cpu_1epoch",
+  "device": "cpu",
+  "run_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\runs\\E5_cpu_1epoch",
+  "tensorboard_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\runs\\E5_cpu_1epoch\\tensorboard"
+}

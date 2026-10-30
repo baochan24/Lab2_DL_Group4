@@ -5,7 +5,7 @@ strategy: classifier_only
 finetune_layers: []
 batch_size: 64
 learning_rate: 0.001
-epochs: 10
+epochs: 1
 optimizer: adam
 weight_decay: 0.0001
 seed: 42
@@ -13,8 +13,8 @@ seed: 42
 image_size: 224
 num_classes: 10
 val_ratio: 0.1
-num_workers: 2
-
+num_workers: 0
+device: cpu
 data_dir: ./data
 log_dir: ./outputs/runs/E4_batch_size
 checkpoint_dir: ./outputs/checkpoints/E4_batch_size

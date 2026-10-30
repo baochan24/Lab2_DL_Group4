@@ -1,1 +1,7 @@
-experiment,model,learning_rate,batch_size,epochs,strategy,best_epoch,best_val_loss,best_val_accuracy,test_loss,test_accuracy,runtime_seconds,seed,notes
+experiment_name,model_name,strategy,learning_rate,batch_size,epochs,seed,best_val_loss,best_val_accuracy,test_accuracy,training_time_sec
+E1_vgg16,vgg16,classifier_only,0.001,32,1,42,0.524489124083519,0.8288,,21929.006919599997
+E2_densenet121,densenet121,classifier_only,0.001,32,1,42,0.34621573123931887,0.8784,,5407.230531100002
+E3_learning_rate,densenet121,classifier_only,0.0001,32,1,42,0.5777967721939087,0.8344,,5329.618330900001
+E4_batch_size,densenet121,classifier_only,0.001,64,1,42,0.3674118246078491,0.8716,,5499.967411000005
+E5_cpu_1epoch,densenet121,finetune_last_layers,0.0001,32,1,42,0.23213470115661622,0.921,0.9181,6135.234429499998
+E5_finetuning,densenet121,finetune_last_layers,0.0001,32,10,42,,,,
