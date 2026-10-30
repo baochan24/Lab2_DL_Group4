@@ -47,7 +47,7 @@ Ignore outliers in chart scaling để thấy đầy đủ các điểm.
 Mỗi lượt chỉ có một điểm tại step 1, tương ứng một epoch.
 Biểu đồ dùng đối chiếu metrics giữa các lượt;
 không đủ để phân tích xu hướng hội tụ qua nhiều epoch.
-
+![TensorBoard của năm lượt thực nghiệm](reports/figures/tensorboard_comparison.png)
 ## Hạn chế
 
 Chưa thực hiện confusion matrix hoặc phân tích lỗi theo lớp.
