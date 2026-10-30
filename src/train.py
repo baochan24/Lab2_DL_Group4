@@ -137,6 +137,8 @@ def _run_epoch(
     print(f"{phase}: bắt đầu {len(loader)} batch", flush=True)
 
     for batch_index, (images, labels) in enumerate(loader, start=1):
+        images = images.to(device)
+        labels = labels.to(device=device, dtype=torch.long)
 
         if training:
             optimizer.zero_grad(set_to_none=True)
