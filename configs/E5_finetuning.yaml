@@ -1,9 +1,20 @@
-# TODO TV5: so sánh mở một phần backbone để fine-tune.
 experiment_name: E5_finetuning
-model_name: null
+model_name: densenet121
 pretrained: true
-batch_size: null
-learning_rate: null
-epochs: null
 strategy: finetune_last_layers
+finetune_layers:
+- features.denseblock4
+- features.norm5
+batch_size: 32
+learning_rate: 0.0001
+epochs: 10
+optimizer: adam
+weight_decay: 0.0001
 seed: 42
+image_size: 224
+num_classes: 10
+val_ratio: 0.1
+num_workers: 2
+data_dir: ./data
+log_dir: ./outputs/runs/E5_finetuning
+checkpoint_dir: ./outputs/checkpoints/E5_finetuning

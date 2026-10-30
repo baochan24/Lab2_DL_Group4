@@ -1,0 +1,9 @@
+{
+  "experiment_name": "E2_densenet121",
+  "smoke_test": false,
+  "best_epoch": 1,
+  "best_val_acc": 0.8784,
+  "best_val_loss": 0.34621573123931887,
+  "training_time_sec": 5407.230531100002,
+  "best_checkpoint_path": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\checkpoints\\E2_densenet121\\best_model.pth"
+}

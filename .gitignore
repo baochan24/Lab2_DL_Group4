@@ -36,3 +36,6 @@ outputs/tmp/
 # CIFAR-10 downloaded locally
 data/cifar-10-batches-py/
 data/cifar-10-python.tar.gz
+# Local review backups
+*.bak
+/tatus

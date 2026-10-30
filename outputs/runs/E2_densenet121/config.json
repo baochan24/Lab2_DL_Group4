@@ -1,0 +1,23 @@
+{
+  "experiment_name": "E2_densenet121",
+  "model_name": "densenet121",
+  "pretrained": true,
+  "strategy": "classifier_only",
+  "finetune_layers": [],
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "epochs": 1,
+  "optimizer": "adam",
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "image_size": 224,
+  "num_classes": 10,
+  "val_ratio": 0.1,
+  "num_workers": 0,
+  "data_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\data",
+  "log_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\runs\\E2_densenet121",
+  "checkpoint_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\checkpoints\\E2_densenet121",
+  "device": "cpu",
+  "run_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\runs\\E2_densenet121",
+  "tensorboard_dir": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\runs\\E2_densenet121\\tensorboard"
+}

@@ -1,9 +1,20 @@
-# TODO TV5: VGG16 baseline. Chưa chốt hyperparameter.
 experiment_name: E1_vgg16
 model_name: vgg16
 pretrained: true
-batch_size: null
-learning_rate: null
-epochs: null
 strategy: classifier_only
+finetune_layers: []
+batch_size: 32
+learning_rate: 0.001
+epochs: 1
+optimizer: adam
+weight_decay: 0.0001
 seed: 42
+
+image_size: 224
+num_classes: 10
+val_ratio: 0.1
+num_workers: 0
+device : cpu
+data_dir: ./data
+log_dir: ./outputs/runs/E1_vgg16
+checkpoint_dir: ./outputs/checkpoints/E1_vgg16
