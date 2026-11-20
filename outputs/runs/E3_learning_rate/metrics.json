@@ -1,0 +1,9 @@
+{
+  "experiment_name": "E3_learning_rate",
+  "smoke_test": false,
+  "best_epoch": 1,
+  "best_val_acc": 0.8344,
+  "best_val_loss": 0.5777967721939087,
+  "training_time_sec": 5329.618330900001,
+  "best_checkpoint_path": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\checkpoints\\E3_learning_rate\\best_model.pth"
+}

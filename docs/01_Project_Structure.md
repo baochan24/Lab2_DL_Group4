@@ -1,165 +1,131 @@
-# Lab 2 — Project Structure & File Ownership
+# 01 — Cấu trúc dự án Lab 2
 
-> Dataset: CIFAR-10  
-> Runtime: local computer with NVIDIA GPU  
-> Workflow: reusable Python scripts + notebooks for exploration and analysis  
-> Status: proposed structure; this document defines the plan, not implemented code.
+## 1. Cây thư mục
 
-## 1. Repository tree
+```text
+Lab2_DL_Group4/
+├── README.md
+├── main.py
+├── requirements.txt
+├── .gitignore
+├── configs/
+│   ├── README.md
+│   ├── E1_vgg16.yaml
+│   ├── E2_densenet121.yaml
+│   ├── E3_learning_rate.yaml
+│   ├── E4_batch_size.yaml
+│   └── E5_finetuning.yaml
+├── data/
+│   └── README.md
+├── src/
+│   ├── README.md
+│   ├── data.py
+│   ├── models.py
+│   ├── train.py
+│   ├── evaluate.py
+│   ├── utils.py
+│   └── predict.py
+├── notebooks/
+│   ├── README.md
+│   ├── 01_dataset_exploration.ipynb
+│   └── 02_results_analysis.ipynb
+├── outputs/
+│   ├── README.md
+│   ├── experiment_summary.csv
+│   └── figures/
+├── reports/
+│   ├── Lab2_Report.md
+│   └── sections/
+│       ├── 01_data.md
+│       ├── 02_model.md
+│       ├── 03_training.md
+│       ├── 04_evaluation.md
+│       ├── 05_experiments.md
+│       └── 06_integration.md
+├── tests/
+│   └── README.md
+└── docs/
+    ├── 00_Lab2_Planning.md
+    ├── ASSIGNMENT_LAB2.md
+    ├── 01_Project_Structure.md
+    ├── TEAM_CONTRACT.md
+    ├── FILE_OWNERS.md
+    ├── GIT_WORKFLOW.md
+    └── REVIEW_CHECKLIST.md
+```
 
-    Lab2_DL_Group4/
-    ├── README.md
-    ├── main.py
-    ├── requirements.txt
-    ├── .gitignore
-    ├── configs/
-    │   ├── README.md
-    │   ├── E1_vgg16.yaml
-    │   ├── E2_densenet121.yaml
-    │   ├── E3_learning_rate.yaml
-    │   ├── E4_batch_size.yaml
-    │   └── E5_finetuning.yaml
-    ├── data/
-    │   └── README.md
-    ├── src/
-    │   ├── README.md
-    │   ├── data.py
-    │   ├── models.py
-    │   ├── train.py
-    │   ├── evaluate.py
-    │   ├── utils.py
-    │   └── predict.py
-    ├── notebooks/
-    │   ├── README.md
-    │   ├── 01_dataset_exploration.ipynb
-    │   └── 02_results_analysis.ipynb
-    ├── tests/
-    │   └── README.md
-    ├── outputs/
-    │   ├── README.md
-    │   ├── experiment_summary.csv
-    │   └── figures/
-    ├── reports/
-    │   ├── Lab2_Report.md
-    │   └── sections/
-    │       ├── 01_data.md
-    │       ├── 02_model.md
-    │       ├── 03_training.md
-    │       ├── 04_evaluation.md
-    │       ├── 05_experiments.md
-    │       └── 06_integration.md
-    └── docs/
-        ├── 00_Lab2_Planning.md
-        ├── ASSIGNMENT_LAB2.md
-        ├── 01_Project_Structure.md
-        ├── TEAM_CONTRACT.md
-        ├── FILE_OWNERS.md
-        ├── GIT_WORKFLOW.md
-        └── REVIEW_STATUS.md
+## 2. File nào do ai sở hữu?
 
-This is the intended structure. Files are not considered implemented merely because they appear in this tree.
-
-## 2. File ownership
-
-| Path | Responsibility | Owner |
+| File/thư mục | Người phụ trách | Mục đích |
 |---|---|---|
-| configs/ | Experiment configurations | TV5 |
-| data/README.md | Data acquisition notes; downloaded data stays local | TV1 |
-| src/data.py | CIFAR-10 transforms, split, DataLoaders | TV1 |
-| notebooks/01_dataset_exploration.ipynb | Inspect sample images, labels, shapes and preprocessing | TV1 |
-| src/models.py | Pre-trained models, 10-class classifier, freeze policy | TV2 |
-| src/train.py | Training/validation loop, checkpoint selection | TV3 |
-| src/evaluate.py | Evaluate selected checkpoint | TV4 |
-| notebooks/02_results_analysis.ipynb | Analyze measured metrics and plots | TV4 |
-| outputs/experiment_summary.csv | Actual configurations and measured metrics | TV5 |
-| outputs/figures/ | Figures selected for report | TV4 |
-| src/utils.py | Shared seed/config/metric helpers | TV6 |
-| src/predict.py | Optional single-image inference demonstration | TV6 |
-| main.py | Entry point coordinating modules | TV6 |
-| README.md, requirements.txt, .gitignore | Setup, commands and repository hygiene | TV6 |
-| reports/sections/ | Individual report sections | TV1–TV6 |
-| docs/ | Planning, contracts, ownership and review status | TV6 coordinates |
-| tests/ | Module tests | Each module owner; TV6 coordinates |
+| `src/data.py` | TV1 | Tải, chia và tiền xử lý CIFAR-10; DataLoader |
+| `notebooks/01_dataset_exploration.ipynb` | TV1 | Kiểm tra ảnh, nhãn, shape và preprocessing |
+| `src/models.py` | TV2 | Pre-trained architecture, classifier 10 lớp, freeze/fine-tune |
+| `src/train.py` | TV3 | Training và validation loop |
+| `src/evaluate.py` | TV4 | Đánh giá checkpoint được chọn |
+| `notebooks/02_results_analysis.ipynb` | TV4 | Phân tích metrics/biểu đồ thật |
+| `configs/` | TV5 | Cấu hình các lần thực nghiệm |
+| `outputs/experiment_summary.csv` | TV5 phối hợp TV4 | Metrics và cấu hình thực đo |
+| `outputs/figures/` | TV4 | Biểu đồ được chọn cho báo cáo |
+| `src/utils.py`, `src/predict.py` | TV6 | Tiện ích chung và demo inference |
+| `main.py` | TV6 | Kết nối các module thành pipeline |
+| `README.md`, `requirements.txt`, `.gitignore` | TV6 | Cài đặt, chạy và quản lý file |
+| `reports/sections/01_data.md` | TV1 | Báo cáo dữ liệu |
+| `reports/sections/02_model.md` | TV2 | Báo cáo kiến trúc |
+| `reports/sections/03_training.md` | TV3 | Báo cáo huấn luyện |
+| `reports/sections/04_evaluation.md` | TV4 | Báo cáo đánh giá |
+| `reports/sections/05_experiments.md` | TV5 | Báo cáo thí nghiệm |
+| `reports/sections/06_integration.md` | TV6 | Báo cáo tích hợp |
+| `reports/Lab2_Report.md` | TV6 tổng hợp | Báo cáo cuối |
+| `docs/` | TV6 điều phối, cả nhóm review | Kế hoạch và quy ước |
+| `tests/` | Mỗi chủ module; TV6 điều phối | Kiểm thử module |
 
-## 3. Module interface contract
+## 3. Dòng dữ liệu từ đầu đến output
 
-These are logical responsibilities, not final Python function signatures. Agree on exact signatures and return types before implementation.
+```text
+CIFAR-10
+   ↓
+src/data.py
+   ↓
+Train / Validation / Test DataLoaders
+   ↓
+src/models.py — pre-trained VGG16/DenseNet121 + classifier 10 lớp
+   ↓
+src/train.py — train + validation + TensorBoard + checkpoint theo validation
+   ↓
+TV5 quản lý configs và so sánh các experiment
+   ↓
+Chọn cấu hình theo validation
+   ↓
+src/evaluate.py — đánh giá test cuối
+   ↓
+outputs/experiment_summary.csv + outputs/figures/
+   ↓
+notebooks/02_results_analysis.ipynb
+   ↓
+reports/Lab2_Report.md + README hướng dẫn tái lập
+```
 
-### TV1 — Data
-- Provide a documented entry point for train, validation and test DataLoaders.
-- Report class names and class count (10).
-- Document transforms, normalization, split seed and loader settings.
-- Keep test data out of hyperparameter/model selection.
+## 4. Quy tắc kết nối module
+- TV1 cung cấp DataLoaders cho TV3/TV4.
+- TV2 cung cấp model có đầu ra 10 logits cho TV3/TV4.
+- TV3 nhận model, loaders và config; trả history/checkpoint metadata.
+- TV4 ghi nhận/đọc metrics, đánh giá test sau khi model được chọn.
+- TV5 quản lý cấu hình run và tổng hợp kết quả đo.
+- TV6 điều phối bằng `main.py`, không nhân bản logic lõi.
 
-### TV2 — Model
-- Provide a model factory for architecture, pretrained weights, class count and freeze/fine-tune options.
-- Output logits with shape [batch_size, 10].
-- Report total and trainable parameters.
-- Do not add Softmax before CrossEntropyLoss.
+## 5. Kết quả cuối cùng cần có
+1. Code chạy lại được cho data/model/train/evaluate.
+2. Bảng mô tả cấu hình từng thí nghiệm.
+3. Train/validation loss và accuracy trên TensorBoard.
+4. Bảng metrics đo thật và kết quả test cuối.
+5. Checkpoint được chọn theo validation (lưu cục bộ hoặc kho artifact đã thống nhất).
+6. Notebook phân tích kết quả.
+7. Báo cáo kết luận so sánh các mô hình và hyperparameters.
+8. README có lệnh cài đặt, train, evaluate và mở TensorBoard.
 
-### TV3 — Training
-- Consume model, loaders, optimizer/loss settings and run metadata.
-- Record train/validation loss and accuracy by epoch.
-- Save checkpoint selected using validation performance.
-- Return history and checkpoint metadata/path.
-
-### TV4 — Evaluation
-- Evaluate the selected checkpoint on test data after model selection.
-- Return measured metrics and create plots from recorded results.
-- Do not use test metrics to select hyperparameters.
-
-### TV5 — Experiments
-- Give each run a unique ID/name and explicit configuration.
-- Link measured metrics to the configuration that produced them.
-- Prefer controlled comparisons that change one primary factor at a time.
-
-### TV6 — Integration
-- Coordinate shared interfaces and verify the environment.
-- Keep main.py as an orchestrator rather than duplicating module logic.
-- Ensure README commands match implemented interfaces.
-
-## 4. Proposed experiment plan
-
-These IDs are planning suggestions, not a number of experiments mandated by the assignment.
-
-| ID | Purpose | Main variable |
-|---|---|---|
-| E1 | VGG16 baseline | Baseline architecture |
-| E2 | DenseNet121 comparison | Architecture |
-| E3 | Learning-rate comparison | Learning rate |
-| E4 | Batch-size comparison | Batch size |
-| E5 | Fine-tuning comparison | Freeze/unfreeze strategy |
-
-Choose exact learning rates, batch sizes, epoch count and fine-tuning depth after checking the GPU and VRAM. Do not add metric values until experiments have actually run.
-
-## 5. Output and Git policy
-
-- CIFAR-10 downloads and cache stay local; do not commit them.
-- Do not commit virtual environments, credentials, or .env files.
-- Keep TensorBoard logs local by default; save selected screenshots/figures for the report.
-- Do not push large checkpoints without team agreement; use an agreed artifact location.
-- Commit result tables and report figures only after verifying that all values are measured.
-- Keep the main report concise and link member-owned report sections.
-
-## 6. Branch and PR plan
-
-Planned work branches:
-- feature/data — TV1
-- feature/model — TV2
-- feature/training — TV3
-- feature/evaluation — TV4
-- feature/experiments — TV5
-- feature/integration — TV6
-
-Create these from the agreed main only after the assignment and structure documents have been reviewed. This documentation change does not create any of those six branches.
-
-Each PR should state changed files, verification steps and actual output; update the relevant report section; mention interface changes and known limitations; and receive review before merge.
-
-## 7. Definition of ready
-
-- [ ] All six members accept their assignment.
-- [ ] Assignment and structure documents agree.
-- [ ] Dependent members agree on module interfaces.
-- [ ] GPU, Python and PyTorch installation approach have been checked.
-- [ ] Experiment settings are configurable rather than hard-coded.
-- [ ] Everyone understands validation is for model selection and test is for final evaluation.
+## 6. Điều không được làm
+- Không dùng test set để chọn model/hyperparameter.
+- Không ghi metrics trước khi chạy thật.
+- Không commit dataset, secrets, virtualenv hoặc log/checkpoint lớn theo mặc định.
+- Không xem file placeholder là code đã hoàn thiện.

@@ -1,0 +1,9 @@
+{
+  "experiment_name": "E1_vgg16",
+  "smoke_test": false,
+  "best_epoch": 1,
+  "best_val_acc": 0.8288,
+  "best_val_loss": 0.524489124083519,
+  "training_time_sec": 21929.006919599997,
+  "best_checkpoint_path": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\checkpoints\\E1_vgg16\\best_model.pth"
+}

@@ -1,0 +1,10 @@
+# Cài PyTorch và Torchvision theo hướng dẫn chính thức tương thích với máy trước.
+# Không pin torch/torchvision tại đây để tránh cài nhầm CUDA build.
+# Sau khi torch/torchvision được cài đúng, cài:
+tensorboard
+matplotlib
+pandas
+scikit-learn
+jupyter
+PyYAML
+Pillow

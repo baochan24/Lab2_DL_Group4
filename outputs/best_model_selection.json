@@ -1,0 +1,9 @@
+{
+    "status": "selected",
+    "selected_run": "E5_cpu_1epoch",
+    "model_name": "densenet121",
+    "strategy": "finetune_last_layers",
+    "best_val_accuracy": 0.921,
+    "best_val_loss": 0.23213470115661622,
+    "checkpoint_path": "outputs/checkpoints/E5_cpu_1epoch/best_model.pth"
+}

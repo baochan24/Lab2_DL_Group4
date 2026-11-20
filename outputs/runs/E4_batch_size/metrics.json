@@ -1,0 +1,9 @@
+{
+  "experiment_name": "E4_batch_size",
+  "smoke_test": false,
+  "best_epoch": 1,
+  "best_val_acc": 0.8716,
+  "best_val_loss": 0.3674118246078491,
+  "training_time_sec": 5499.967411000005,
+  "best_checkpoint_path": "D:\\learn_DeepLearning\\Lab2_DL_Group4_review\\outputs\\checkpoints\\E4_batch_size\\best_model.pth"
+}
